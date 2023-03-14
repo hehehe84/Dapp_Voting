@@ -1,7 +1,19 @@
-# Links
+# Dapp Links:
 
-vidéo de présentation : 
+Video file : 
 
-##
+Github link:
 
-###
+App portal:
+
+# Voting contract:
+
+Natspec adaptation.
+
+Namming check.
+
+Dos gas limit prevention.
+
+# Contract tests:
+
+Voting tests adaptation.
