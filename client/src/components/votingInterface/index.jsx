@@ -14,7 +14,7 @@ function votingInterface() {
     setBalance(value);
   }
 
-  useEffect(() => {
+  useEffect( () => {
     if (contract?.methods) {
         refreshBalance();
     }

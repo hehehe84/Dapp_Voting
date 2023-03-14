@@ -1,5 +1,5 @@
 import { EthProvider } from "./contexts/EthContext";
-import Intro from "./components/Intro/";
+import Intro from "./components/intro.jsx";
 
 
 function App() {
@@ -7,6 +7,8 @@ function App() {
     <EthProvider>
       <div id="App">
         <div className="container">
+          <Intro />
+          <hr/>
           <votingInstance />
         </div>
       </div>
