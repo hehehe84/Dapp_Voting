@@ -9,4 +9,4 @@ Le user connecté voit son address (header : vous êtes connecté avec votre add
 
 Tabkeau proposal (event)
 
-Par défaut, le user n'est pas whitelisté
+Par défaut, le user n'est pas whitelist
