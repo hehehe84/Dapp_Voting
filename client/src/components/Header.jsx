@@ -1,8 +1,9 @@
+import Address from "./VotingInterface/Address.jsx";
 
-
-export const Header = () => {
-        return (
-                <h1>Our address</h1>
-        )
+function Header() {
+        return(
+                <Address />
+        );
 }
+
 export default Header;
