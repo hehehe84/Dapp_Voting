@@ -40,4 +40,10 @@ hr {
 #Footer {
   position: absolute;
   bottom: 0;
+  left: 0;
+}
+
+.addr {
+  align-items: right;
+  padding-right: 30px;
 }
