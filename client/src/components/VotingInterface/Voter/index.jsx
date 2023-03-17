@@ -1,7 +1,7 @@
 
 function Voter() {
   return (
-        <div id="App">
+        <div>
           <h3>Voter Part</h3>
         </div>
   );
