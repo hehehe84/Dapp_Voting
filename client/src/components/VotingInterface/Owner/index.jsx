@@ -1,6 +1,6 @@
 import { useEth } from "../../../contexts/EthContext";
 import { useEffect } from "react";
-import isOwner from "./IsOwner";
+import isOwner from "./isOwner";
 
 // function Owner() {
 function Owner() {
