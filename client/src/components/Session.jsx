@@ -1,5 +1,5 @@
-import Owner from "./Owner/index";
-import Voter from "./Voter/index";
+import Owner from "./VotingInterface/Owner/index";
+import Voter from "./VotingInterface/Voter/index";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export const Session = () => {

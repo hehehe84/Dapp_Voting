@@ -5,7 +5,7 @@ function Address() {
     const { state: { accounts } } = useEth();
 
     return(
-        <div id="addr">
+        <div id="addr"> 
             Your address: {accounts && accounts[0] && <pre>{accounts[0]}</pre>}
         </div>
     );
