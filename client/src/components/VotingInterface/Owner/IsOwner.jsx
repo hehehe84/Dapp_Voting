@@ -1,16 +1,14 @@
-import { useState } from "react";
-import { useEth } from "../../../contexts/EthContext";
-const {state : {accounts, contract, artifact}} = useEth();
-const [isOwner, setIsOwner] = useState("");
+// import { useEth } from "../../../contexts/EthContext";
+// const {state : {accounts, contract, artifact}} = useEth();
 
-function isOwner() {
+
+async function IsOwner(accounts, contract, artifact) {
+    const setIsOwner=false;
     if (artifact) {
-        const owner = contract.methods.owner().call({ from: accounts[0]});
+        const owner = await contract.methods.owner().call({ from: accounts[0]});
         accounts[0] === owner ? setIsOwner(true) : setIsOwner(false);
     }
-    return {
-        setIsOwner,       
-    }
+    return setIsOwner;
 }
 
-export default isOwner;
+export default IsOwner;
