@@ -7,7 +7,9 @@ import Footer from "./components/Footer";
 import { ChakraProvider } from '@chakra-ui/react'
 
 
+
 function App() {
+
   return (
     <ChakraProvider>
       <EthProvider>
@@ -18,8 +20,6 @@ function App() {
             <Session />
             <hr/>
             <Intro />
-            {/* <hr/>
-            <VotingInterface /> */}
             <hr/>
             <Footer />
           </div>
