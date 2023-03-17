@@ -1,17 +1,9 @@
-import { EthProvider } from "./contexts/EthContext";
-
-import { ChakraProvider } from '@chakra-ui/react'
-
 
 function Owner() {
   return (
-    <ChakraProvider>
-      <EthProvider>
         <div id="App">
-          
+          <h3>Owner Part</h3>
         </div>
-      </EthProvider>
-    </ChakraProvider>
   );
 }
 
