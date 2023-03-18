@@ -1,30 +1,35 @@
 import { Button, WrapItem } from '@chakra-ui/react'
+import useEth from "../../../contexts/EthContext/useEth"
 import { useState } from 'react';
-import useEth from "../../contexts/EthContext/useEth";
 
-function AddProposal() {
-  const { state: { contract, accounts, web3 } } = useEth();
-  const [proposal, setProposal] = useState('');
+function AddProposal(proposals, setProposals) {
+  const { state: { contract, accounts } } = useEth();
+  const [newProposal, setNewProposal] = useState("");
   
   const handleInputChange = (e) => {
-    setProposal(e.target.value);
+    setProposals(e.target.value);
   };
 
   const addproposal = async () =>{
-      await contract.methods.addProposal(proposal).call({ from: accounts[0] });
-      await contract.methods.addProposal(proposal).send({ from: accounts[0] });
-  }
+    if (newProposal !== "") {
+      await contract.methods.addProposal().send({ from: accounts[0] });
+      setNewProposal("");
+      setProposals([...proposals, newProposal]);
+    }
+  };
 
   return (
     <div>
+      <div>
         <input
           type="text"
           placeholder="proposal"
-          value={proposal}
+          value={newProposal}
           onChange={handleInputChange}
         />
+      </div>
         <WrapItem>
-          <Button colorScheme='teal' size='md' onClick={addproposal}>Add Proposal</Button>  
+          <Button colorScheme='teal' size='md' onClick={addproposal}><span>Add Proposal</span></Button>  
         </WrapItem>
     </div>
   );

@@ -14,7 +14,6 @@ export const Session = () => {
     //   "VotingSessionEnded",
     //   "VotesTallied"
     // ];
-    const [proposals, setProposals] = useState([]);
     const [winner, setWinner] = useState(null);  
 
     return (
@@ -29,7 +28,7 @@ export const Session = () => {
                 <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} />
                 </TabPanel>
                 <TabPanel>
-                <Voter proposals={proposals} setProposals={setProposals} currentStatus={currentStatus} setWinner={setWinner} />
+                <Voter currentStatus={currentStatus} setWinner={setWinner} />
                 </TabPanel>
                 <TabPanel>
                 <Winner winner={winner} currentStatus={winner} />

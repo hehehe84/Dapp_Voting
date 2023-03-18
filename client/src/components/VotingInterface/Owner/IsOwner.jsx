@@ -1,7 +1,3 @@
-// import { useEth } from "../../../contexts/EthContext";
-// const {state : {accounts, contract, artifact}} = useEth();
-
-
 async function IsOwner(accounts, contract, artifact) {
     const setIsOwner=false;
     if (artifact) {
