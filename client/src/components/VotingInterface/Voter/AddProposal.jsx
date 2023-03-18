@@ -1,10 +1,9 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
-
+import { Button, WrapItem } from '@chakra-ui/react'
 import { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function Proposal() {
-  const { state: { contract, accounts } } = useEth();
+function AddProposal() {
+  const { state: { contract, accounts, web3 } } = useEth();
   const [proposal, setProposal] = useState('');
   
   const handleInputChange = (e) => {
@@ -24,8 +23,10 @@ function Proposal() {
           value={proposal}
           onChange={handleInputChange}
         />
-        <button onClick={addproposal}>Add Proposal</button>  
+        <WrapItem>
+          <Button colorScheme='teal' size='md' onClick={addproposal}>Add Proposal</Button>  
+        </WrapItem>
     </div>
   );
 }
-export default Proposal;
+export default AddProposal;

@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Intro from "./components/Intro.jsx";
 import Session from "./components/Session"
 import Footer from "./components/Footer";
-import VotingInterface from "./components/VotingInterface/index";
+// import VotingInterface from "./components/VotingInterface/index";
 import { ChakraProvider } from '@chakra-ui/react'
 
 
@@ -21,7 +21,7 @@ function App() {
             <hr/>
             <Intro />
             <hr/>
-            <VotingInterface/>
+            {/* <VotingInterface/> */}
             <br/>
             <Footer />
           </div>

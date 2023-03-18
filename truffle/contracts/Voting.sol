@@ -15,14 +15,10 @@ $ @title Voting.sol secure and optimized Smart Contract
 contract Voting is Ownable {
 
     /**
-    * @notice WinningProposalId will show the final result in the TallyVote function,
-    * and winningPropId will be used to calculate for each vote the temporarily winning proposal 
-    * to prevent DoS gas limit attack.
-    * Each uint is uint128 to apply variable packing and take only 1 slot of memory here.
+    * @notice WinningProposalId will show the final result in the TallyVote function.
     * (numbers of proposals would be adapted for a smal community like here)
     */
-    uint128 public winningProposalID;
-    uint128 public winningPropId;
+    uint256 public winningProposalID;
     
     /**
     $ @notice A Voter structure is defined for each voter.
@@ -137,26 +133,24 @@ contract Voting is Ownable {
     * @notice VotingSessionStarted is the third stage of the voting process.
     * Voters will be able to vote for their favorite proposal.
     * @dev Voters can't vote twice.
-    * Also we decided to implement a temporary memory winingproposalId here to prevent
+    * Also we decided to implement a private variable _winingproposalId here to prevent
     * DoS gas limit attack in the TallyVote() function in case of malicious proposals.
     */
+
+    uint256 private _winningProposalId;
+
     function setVote( uint128 _id) external onlyVoters {
         require(workflowStatus == WorkflowStatus.VotingSessionStarted, 'Voting session havent started yet');
         require(voters[msg.sender].hasVoted != true, 'You have already voted');
         require(_id < proposalsArray.length, 'Proposal not found'); // pas obligé, et pas besoin du >0 car uint
 
-        uint128 _winningProposalId;
-        
-        for (uint128 p = 0; p < proposalsArray.length; p++) {
-           if (proposalsArray[p].voteCount > proposalsArray[_winningProposalId].voteCount) {
-               _winningProposalId = p;
-          }
-       }
-       winningPropId = _winningProposalId;
-
         voters[msg.sender].votedProposalId = _id;
         voters[msg.sender].hasVoted = true;
         proposalsArray[_id].voteCount++;
+
+        if (proposalsArray[_id].voteCount > proposalsArray[_winningProposalId].voteCount) {
+            _winningProposalId = _id;
+        }
 
         emit Voted(msg.sender, _id);
     }
@@ -202,7 +196,7 @@ contract Voting is Ownable {
     */
     function tallyVotes() external onlyOwner {
        require(workflowStatus == WorkflowStatus.VotingSessionEnded, "Current status is not voting session ended");
-        winningProposalID = winningPropId;
+        winningProposalID = _winningProposalId;
        
        workflowStatus = WorkflowStatus.VotesTallied;
        emit WorkflowStatusChange(WorkflowStatus.VotingSessionEnded, WorkflowStatus.VotesTallied);
