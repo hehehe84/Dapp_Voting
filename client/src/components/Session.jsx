@@ -33,7 +33,7 @@ function Session() {
                 </TabList>
                 <TabPanels>
                     <TabPanel>
-                    <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} setWinner={setWinner} voters={voters} setVoters={setVoters} />
+                    <Owner status={status} currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} setWinner={setWinner} voters={voters} setVoters={setVoters} />
                     </TabPanel>
                     <TabPanel>
                     <Voter status={status} currentStatus={currentStatus} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} voters={voters} />

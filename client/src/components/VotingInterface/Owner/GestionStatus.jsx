@@ -1,8 +1,8 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import useEth from "../../contexts/EthContext/useEth"
+// import { useState, useEffect } from "react";
 
-import useEth from "../../contexts/EthContext/useEth";
+function GestionStatus({ currentStatus, setCurrentStatus, status })
 
-function EndProposalRegistering(setCurrentStatus) {
   const { state: { contract, accounts } } = useEth();
 
   const proposalRegisteringEnd = async () => {
@@ -19,4 +19,4 @@ function EndProposalRegistering(setCurrentStatus) {
   );
 }
 
-export default EndProposalRegistering;
+export default GestionStatus;

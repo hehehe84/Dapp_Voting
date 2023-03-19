@@ -3,29 +3,28 @@ import useEth from "../../../contexts/EthContext/useEth";
 import { useState, useEffect } from 'react';
 
 // {currentStatus}
-function GetWorkflowStatus ({currentStatus}) {
+function GetWorkflowStatus ({currentStatus, setCurrentStatus}) {
   const { state: { contract, accounts, artifact } } = useEth();
-  const [workflowStatus, setWorkflowStatus] = useState("")
 
-  async function getWorkflowStatus() {
-    if (artifact) {
-      const actualWorkflowStatus = await contract.methods.WorkflowStatus().call({ from: accounts[0] });
-      setWorkflowStatus(actualWorkflowStatus);
-    }
-  };
 
-  useEffect(() => {
+  // useEffect(() => {
+  // }, [accounts, contract, artifact, currentStatus])
+    async function getWorkflowStatus() {
+      if (artifact) {
+        const actualWorkflowStatus = await contract.methods.workflowStatus().call({ from: accounts[0] });
+        setCurrentStatus = actualWorkflowStatus;
+      }
+    };
     getWorkflowStatus();
-  }, [accounts, contract, artifact, currentStatus])
 
   return (
     <div>
         <Button colorScheme='teal' size='md' onClick={getWorkflowStatus}>
-        WorkflowStatus: {workflowStatus}
+        WorkflowStatus: {currentStatus}
         </Button>
 
         <span>
-            {workflowStatus}
+            {currentStatus}
         </span>
       
     </div>

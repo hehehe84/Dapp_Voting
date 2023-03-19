@@ -13,10 +13,10 @@ import {
 import { useEffect, useState } from 'react'
 import useEth from '../../../contexts/EthContext/useEth';
 
-function GetVoter({voters, setVoters}) {
+function GetVoter() {
   const { state: { contract, accounts, artifact }} = useEth();
 
-  const [voters, setVoters] = useState;
+  const [voters, setVoters] = useState([]);
 
   useEffect(() => {
     async function getVoters() {
