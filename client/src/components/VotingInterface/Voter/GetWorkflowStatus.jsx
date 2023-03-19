@@ -1,5 +1,4 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
-
+import { Button } from '@chakra-ui/react';
 import useEth from "../../contexts/EthContext/useEth";
 
 function getWorkflowStatus ({currentStatus}) {
@@ -13,9 +12,9 @@ function getWorkflowStatus ({currentStatus}) {
 return (
 
     <div>
-        <button onClick={getWorkflowStatus}>
+        <Button colorScheme='teal' size='md' onClick={getWorkflowStatus}>
             Get Workflow Status
-        </button>
+        </Button>
 
         <div className="currenStatus">
             Current Workflowstatus : {currentStatus}
