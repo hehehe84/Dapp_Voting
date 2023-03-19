@@ -2,17 +2,18 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 
 import useEth from "../../contexts/EthContext/useEth";
 
-function StartProposalRegistering() {
+function StartProposalRegistering(setCurrentStatus) {
   const { state: {contract, accounts} } = useEth();
 
   const proposalRegisteringStart = async () => {
-    await contract.methods.startProposalsRegistering().send({ from: accounts[0] });
+  const status = await contract.methods.startProposalsRegistering().send({ from: accounts[0] });
+  setCurrentStatus(status);
   };
 
   return (
     <div className="startProp">
       <button onClick={proposalRegisteringStart}>
-        StartProposalRegistering
+        Start Proposal Registration
       </button>
     </div>
   );

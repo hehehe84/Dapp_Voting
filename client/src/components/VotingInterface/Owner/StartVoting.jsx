@@ -1,18 +1,19 @@
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
-import useEth from "../contexts/useEth";
+import useEth from "../../contexts/EthContext/useEth";
 
-function StartVotingSession() {
+function StartVotingSession(setCurrentStatus) {
   const { state: { contract, accounts } } = useEth();
 
   const VotingSessionStart = async () => {
-    await contract.methods.startVotingSession().send({ from: accounts[0] });
+  const status = await contract.methods.startVotingSession().send({ from: accounts[0] });
+  setCurrentStatus(status);
   };
 
   return (
     <div className="startVote">
       <button onClick={VotingSessionStart}>
-        StartVotingSession
+        Start Voting Session
       </button>
     </div>
   );

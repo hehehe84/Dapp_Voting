@@ -6,6 +6,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export const Session = () => {
     const [currentStatus, setCurrentStatus] = useState(0);
+    
     // const status = [
     //   "RegisteringVoters",
     //   "ProposalsRegistrationStarted",

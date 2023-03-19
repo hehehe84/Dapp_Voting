@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import IsOwner from "./IsOwner";
 
 // function Owner() {
-function Owner() {
+function Owner(currentStatus, setCurrentStatus) {
   const {state : {accounts, contract, artifact}} = useEth();
   const [isOwner, setIsOwner] = useState("");
 
