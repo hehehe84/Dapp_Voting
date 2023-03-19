@@ -1,27 +1,34 @@
 import { Button } from '@chakra-ui/react';
-import useEth from "../../contexts/EthContext/useEth";
+import useEth from "../../../contexts/EthContext/useEth";
+import { useState, useEffect } from 'react';
 
-function getWorkflowStatus ({currentStatus}) {
+// {currentStatus}
+function GetWorkflowStatus () {
   const { state: { contract, accounts } } = useEth();
+  const [WorkflowStatus, setWorkflowStatus] = useState(null)
 
   const getWorkflowStatus = async () => {
-    const currentWorkflow = await contract.methods.workflowStatus().call({ from: accounts[0] });
-    setCurrentStatus(currentWorkflow);
+    const WorkflowStatus = await contract.methods.WorkflowStatus().call({ from: accounts[0] });
+    setWorkflowStatus(WorkflowStatus);
   };
 
-return (
+  useEffect(() => {
+    getWorkflowStatus();
+  })
+
+  return (
 
     <div>
-        <Button colorScheme='teal' size='md' onClick={getWorkflowStatus}>
-            Get Workflow Status
+        <Button colorScheme='teal' size='md' onClick={getWorkflowStatus} >
+            WorkflowStatus :
         </Button>
 
-        <div className="currenStatus">
-            Current Workflowstatus : {currentStatus}
-        </div>
+        <span>
+            {WorkflowStatus}
+        </span>
       
     </div>
-)
+  );
 }
 
-export default getWorkflowStatus;
+export default GetWorkflowStatus;

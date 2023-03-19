@@ -7,14 +7,14 @@ function AddProposal(proposals, setProposals) {
   const [newProposal, setNewProposal] = useState("");
   
   const handleInputChange = (e) => {
-    setProposals(e.target.value);
+    setNewProposal(e.target.value);
   };
 
   const addproposal = async () =>{
     if (newProposal !== "") {
       await contract.methods.addProposal().send({ from: accounts[0] });
-      setNewProposal("");
       setProposals([...proposals, newProposal]);
+      setNewProposal("");
     }
   };
 

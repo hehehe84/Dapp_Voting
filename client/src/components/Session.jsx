@@ -6,7 +6,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export const Session = () => {
     const [currentStatus, setCurrentStatus] = useState(0);
-    
+    const [proposals, setProposals] = useState([]);
     // const status = [
     //   "RegisteringVoters",
     //   "ProposalsRegistrationStarted",
@@ -29,7 +29,7 @@ export const Session = () => {
                 <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} />
                 </TabPanel>
                 <TabPanel>
-                <Voter currentStatus={currentStatus} setWinner={setWinner} />
+                <Voter currentStatus={currentStatus} setWinner={setWinner} proposals={proposals} setProposals={setProposals} />
                 </TabPanel>
                 <TabPanel>
                 <Winner winner={winner} currentStatus={winner} />
