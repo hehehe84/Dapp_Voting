@@ -1,18 +1,29 @@
-import { Button, WrapItem } from '@chakra-ui/react';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react'
+
 import { useEffect, useState } from 'react'
 import useEth from '../../../contexts/EthContext/useEth';
 
 function GetVoter({voters, setVoters}) {
   const { state: { contract, accounts, artifact }} = useEth();
 
-  const Voter = {}
+  const [voters, setVoters] = useState;
 
   useEffect(() => {
     async function getVoters() {
         if (artifact) {
             const VoterRegistered = await contract.getPastEvents('VoterRegistered', {fromBlock: 0, toBlock: "latest"});
             let VoterAddr = VoterRegistered.map((voter) => voter.returnValues._voterAddress)
-            setVoters(VoterAddr)
+            setVoters(VoterAddr);
         }
     }
     getVoters();
@@ -20,17 +31,30 @@ function GetVoter({voters, setVoters}) {
 
   return (
     <div>
-      <div>
-        <input
-          type="number"
-          placeholder="proposalId"
-          value={inputId}
-          onChange={handleInputChange}
-        />
-      </div>
-        <WrapItem>
-          <Button colorScheme='teal' size='md' onClick={getOneProposal}><span>Get Proposal</span></Button>  
-        </WrapItem>
+      <TableContainer>
+        <Table variant='striped' colorScheme='teal'>
+          <TableCaption>Imperial to metric conversion factors</TableCaption>
+          <Thead>
+            <Tr>
+              <Th>Address</Th>
+              <Th>Has Voted</Th>
+              <Th>For Proposal :</Th>
+            </Tr>
+          </Thead>
+
+          <Tbody>
+            {voters.map((VoterAddr) => {
+              return (
+                <Tr>
+                  <Th>{VoterAddr}</Th>
+                  <Th>Yes</Th>
+                  <Th>1</Th>
+                </Tr>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }

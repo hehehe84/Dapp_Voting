@@ -1,7 +1,11 @@
 import { Button, WrapItem } from '@chakra-ui/react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useEth from '../../../contexts/EthContext/useEth';
 
+
+// useEffect(() => {
+//   async function
+// })
 function GetOneProposal({ setProposals }) {
   const { state: { contract, accounts}} = useEth();
   const [inputId, setInputId]= useState("");

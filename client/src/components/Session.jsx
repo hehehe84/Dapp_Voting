@@ -1,43 +1,58 @@
 import { useState } from "react";
+import { useEth } from "../contexts/EthContext";
 import Owner from "./VotingInterface/Owner/index";
 import Voter from "./VotingInterface/Voter/index";
 import Winner from "./VotingInterface/Winner";
-import Address from "./VotingInterface/Address";
+import NoticeNoArtifact from "./NoticeNoArtifact";
+import NoticeWrongNetwork from "./NoticeWrongNetwork";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
-export const Session = () => {
+function Session() {
+    const { state } = useEth();
     const [currentStatus, setCurrentStatus] = useState(0);
     const [proposals, setProposals] = useState([]);
-    // const status = [
-    //   "RegisteringVoters",
-    //   "ProposalsRegistrationStarted",
-    //   "ProposalsRegistrationEnded",
-    //   "VotingSessionStarted",
-    //   "VotingSessionEnded",
-    //   "VotesTallied"
-    // ];
-    const [winner, setWinner] = useState(null);  
+    const [proposalID, setProposalID] = useState([]);
+    const status = [
+      "RegisteringVoters",
+      "ProposalsRegistrationStarted",
+      "ProposalsRegistrationEnded",
+      "VotingSessionStarted",
+      "VotingSessionEnded",
+      "VotesTallied"
+    ];
+    const [winner, setWinner] = useState(null); 
+    const [voters, setVoters] = useState([]); 
 
+    const sess = 
+    <>
+            <Tabs variant='soft-rounded' colorScheme='green'>
+                <TabList>
+                    <Tab>Owner part</Tab>
+                    <Tab>Voter part</Tab>
+                    <Tab>Who is The Winner ?</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel>
+                    <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} setWinner={setWinner} voters={voters} setVoters={setVoters} />
+                    </TabPanel>
+                    <TabPanel>
+                    <Voter status={status} currentStatus={currentStatus} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} voters={voters} />
+                    </TabPanel>
+                    <TabPanel>
+                    <Winner currentPhase={winner} />
+                    </TabPanel>
+                </TabPanels>
+                
+            </Tabs>
+    </>
     return (
-        <Tabs variant='soft-rounded' colorScheme='green'>
-            <TabList>
-                <Tab>Owner part</Tab>
-                <Tab>Voter part</Tab>
-                <Tab>Who is The Winner ?</Tab>
-            </TabList>
-            <TabPanels>
-                <TabPanel>
-                <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} />
-                </TabPanel>
-                <TabPanel>
-                <Voter currentStatus={currentStatus} setWinner={setWinner} proposals={proposals} setProposals={setProposals} />
-                </TabPanel>
-                <TabPanel>
-                <Winner winner={winner} currentStatus={winner} />
-                </TabPanel>
-            </TabPanels>
-            
-        </Tabs>
+        <div>
+            {
+                !state.artifact ? <NoticeNoArtifact /> :
+                    !state.contract ? <NoticeWrongNetwork /> :
+                        sess
+            }
+        </div>
     )
 }
 export default Session;

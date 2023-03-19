@@ -7,16 +7,14 @@ import GetOneProposal from "./GetOneProposal";
 import GetWorkflowStatus from "./GetWorkflowStatus";
 
 
-function Voter(currentStatus, setWinner, proposals, setProposals) {
+function Voter(status, currentStatus, setWinner, proposals, setProposals, proposalID, setProposalID, voters) {
   const { state: { contract, accounts } } = useEth();
   
-  // const [voters, setVoters] = useState([]);
-
   const voterInterface =
   <>
     <Flex>
       <div>
-        <AddProposal proposals={proposals} setProposals={setProposals} />
+        <AddProposal proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} />
       </div>
       <div>
         <GetOneProposal contract={contract} accounts={accounts} />
@@ -25,10 +23,10 @@ function Voter(currentStatus, setWinner, proposals, setProposals) {
     <br/>
     <Flex>
       <div>
-        <GetWorkflowStatus currentStatus={currentStatus} />
+        <GetWorkflowStatus status={status} currentStatus={currentStatus} />
       </div>
       <div>
-        {/* <GetVoter voters={voters} setVoters={setVoters} /> */}
+        {/* <GetVoter voters={voters} /> */}
       </div>
     </Flex>
   </>;
