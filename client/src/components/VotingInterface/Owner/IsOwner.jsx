@@ -1,8 +1,3 @@
-import { useEth } from "../../contexts/EthContext";
-import { useEffect, useState } from "react";
-
-
-
 async function IsOwner(isOwner, setIsOwner, accounts, contract, artifact) {
 
     //const setIsOwner=false;
