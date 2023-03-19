@@ -25,10 +25,10 @@ export const Session = () => {
             </TabList>
             <TabPanels>
                 <TabPanel>
-                <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} />
+                <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} voter={voter}/>
                 </TabPanel>
                 <TabPanel>
-                <Voter currentStatus={currentStatus} setWinner={setWinner} />
+                <Voter currentStatus={currentStatus} setWinner={setWinner}/>
                 </TabPanel>
                 <TabPanel>
                 <Winner winner={winner} currentStatus={winner} />

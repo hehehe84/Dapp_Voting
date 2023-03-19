@@ -17,6 +17,9 @@ function Voter() {
       <div>
         <GetOneProposal contract={contract} accounts={accounts} />
       </div>
+      <div>
+        <GetVoter/>
+      </div>
     </Flex>;
 
   

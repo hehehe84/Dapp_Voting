@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function AddVoter() {
+function AddVoter(voter) {
   const { state: { contract, accounts, web3 } } = useEth();
   const [voter, setVoter] = useState('');
   
