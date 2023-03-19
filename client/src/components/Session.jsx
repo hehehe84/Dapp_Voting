@@ -2,6 +2,7 @@ import { useState } from "react";
 import Owner from "./VotingInterface/Owner/index";
 import Voter from "./VotingInterface/Voter/index";
 import Winner from "./VotingInterface/Winner";
+import Address from "./VotingInterface/Address";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export const Session = () => {
