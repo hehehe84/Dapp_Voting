@@ -2,7 +2,7 @@ import { useEth } from "../../../contexts/EthContext";
 import { useState, useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
 import IsOwner from "./IsOwner";
-// import GestionStatus from "./GestionStatus";
+import GestionStatus from "./GestionStatus";
 
 
 
@@ -22,7 +22,7 @@ function Owner({currentStatus, setCurrentStatus, status}) {
     </div>
 
     <div>
-      {/* <GestionStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} isOwner={isOwner} /> */}
+      <GestionStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} isOwner={isOwner} />
     </div>
 
   </Flex>;

@@ -1,11 +1,11 @@
-import useEth from "../../contexts/EthContext/useEth"
+import useEth from "../../../contexts/EthContext/useEth"
 import { Button } from "@chakra-ui/react";
 
 function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
-  const { state: { contract, accounts } } = useEth();
+  const { state: { contract, accounts, artifact } } = useEth();
 
   const changeStatus = async () => {
-    console.log(currentStatus);
+    // console.log(currentStatus);
     switch (currentStatus) {
       case 0:
         await contract.methods.startProposalsRegistering().send({ from: accounts[0] });
@@ -37,10 +37,11 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
 
   return (
     <div>
-      <Button colorScheme='teal' size='md' onClick={changeStatus}>
+      {/* <p>coucou</p>
+      <Button colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner} >
         Next WorkflowStatus
-      </Button>
-    {/* {status.map((state, i) => {
+      </Button> */}
+    {status.map((state, i) => {
       if (i === currentStatus + 1) {
         return (
           <Button key={state} colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner}>
@@ -50,7 +51,7 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
       } else {
         return null;
       }
-    })} */}
+    })}
   </div>
   );
 }
