@@ -18,6 +18,7 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
       setVoterAddr('');
     } catch(error) {
       alert("Error");
+      setVoterAddr('');
     }     
   };
   
