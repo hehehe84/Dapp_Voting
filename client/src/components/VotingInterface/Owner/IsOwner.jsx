@@ -17,9 +17,7 @@ function IsOwner({isOwner, setIsOwner}) {
 
 
     return (
-        <div>
-            {`Is this Address, the Owner of the contract ? `} {isOwner}
-        </div>
+        <div>{toString(isOwner)}</div>
     );
 }
 
