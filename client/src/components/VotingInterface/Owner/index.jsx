@@ -2,11 +2,11 @@ import { useEth } from "../../../contexts/EthContext";
 import { useState, useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
 import IsOwner from "./IsOwner";
-// import AddVoter from "./AddVoter";
+// import GestionStatus from "./GestionStatus";
 
 
 
-function Owner(currentStatus, setCurrentStatus) {
+function Owner({currentStatus, setCurrentStatus, status}) {
   const {state : {accounts, contract, artifact}} = useEth();
   const [isOwner, setIsOwner] = useState(false);
 
@@ -22,7 +22,7 @@ function Owner(currentStatus, setCurrentStatus) {
     </div>
 
     <div>
-      {/* <GestionStatus /> */}
+      {/* <GestionStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} isOwner={isOwner} /> */}
     </div>
 
   </Flex>;

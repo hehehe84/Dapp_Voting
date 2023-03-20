@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import useEth from "../../../contexts/EthContext/useEth";
 import AddProposal from "./AddProposal"

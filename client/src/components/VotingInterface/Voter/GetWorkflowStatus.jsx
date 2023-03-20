@@ -15,7 +15,7 @@ function GetWorkflowStatus ({currentStatus, setCurrentStatus, status}) {
 
   useEffect(() => {
     getWorkflowStatus();
-  }, [accounts, contract, artifact, currentStatus])
+  }, [accounts, contract, artifact, currentStatus]);
     
 
   return (
