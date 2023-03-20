@@ -3,7 +3,7 @@ import useEth from "../../../contexts/EthContext/useEth"
 import { useState, useEffect } from 'react';
 
 function AddProposal({proposals, setProposals, proposalID, setProposalID}) {
-  const { state: { contract, accounts } } = useEth();
+  const { state: { contract, accounts, artifact, proposalList } } = useEth();
   const [newProposal, setNewroposal] = useState([]);
   const [oldProposal, setOldProposal] = useState([]);
   const [EventValue, setEventValue] = useState(1);
@@ -23,19 +23,28 @@ function AddProposal({proposals, setProposals, proposalID, setProposalID}) {
   };
 
   useEffect(() => {
-    (async function () {
-      let oldProposal = await contract.getPastEvents("ProposalRegistered", {
-        fromBlock: 0,
-        toBlock: "latest",
-      });
+    // (async function () {
+    //   let oldProposal = await contract.getPastEvents("ProposalRegistered", {
+    //     fromBlock: 0,
+    //     toBlock: "latest",
+    //   });
 
-      let oldies = [];
-      oldProposal.forEach((event) => { oldies.push(event.returnValues.proposalId) });
+    //   let oldies = [];
+    //   oldProposal.forEach((event) => { oldies.push(event.returnValues.proposalId) });
 
-      setOldProposal(oldies);
+    //   setOldProposal(oldies);
+
+    (async function() {
+      if (artifact) {
+        let oldProposal = await contract.getPastEvents("ProposalRegistered", {fromBlock: 0, toBlock: "latest"});
+        oldProposal.forEach((event) => { 
+          proposalList.push(event.returnValues.proposalId) 
+        });
+        setOldProposal(proposalList)
+      }
 
       let descriptions = [];
-      for (let id of oldies) {
+      for (let id of proposalList) { //Si marche pas, oldies
         let description = await contract.methods
           .getOneProposal(id)
           .call({ from: accounts[0] });
