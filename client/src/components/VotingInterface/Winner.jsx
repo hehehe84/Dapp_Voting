@@ -17,6 +17,7 @@ function Winner({ currentStatus, setWinner }) {
 
   return (
     <div>
+    <br/><br/>
       {(currentStatus === 4 ) ? (
                 <div>
                   <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>

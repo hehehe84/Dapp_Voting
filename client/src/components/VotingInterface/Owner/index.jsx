@@ -11,6 +11,7 @@ function Owner({currentStatus, setCurrentStatus, status, voterAddr, setVoterAddr
 
   const ownerInterface =
   <div>
+    <br/>
     <Flex>
     <div>
       <IsOwner isOwner={isOwner} setIsOwner={setIsOwner} voterAddr={voterAddr} setVoterAddr={setVoterAddr} />

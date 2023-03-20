@@ -3,7 +3,7 @@ function Hello() {
 
     return(
         <>
-        <br/>
+        <hr/>
         <br/>
             <div id="intro"> 
                 Hello, this application is Yours 😎.<br/>
@@ -11,14 +11,14 @@ function Hello() {
                 <br/>
                 Please, if you are a simple User, ger on Voter part☝️.<br/>
                 If you are the Owner and you wich to add a new Voter or to Open Proposals/Voting Registering,<br/>
-                we meet you up here (in the so call "Owner part").
+                we meet you up here (in the so call "Owner part").<hr/>
             </div>
             <br/>
             <br/>
             <div id="intro2">
-                Thank you for your confidence. You can check all the code in our GitHubs<hr/>
+                Thank you for your confidence. You can check all the code in our GitHubs in total open source 🐆<br/>
                 Antoine Picot : <Link href='https://github.com/hehehe84/'>GitHub</Link><br/>
-                Xavier Barada : <Link href='https://github.com/XaViPanDx'>GitHub</Link>
+                Xavier Barada : <Link href='https://github.com/XaViPanDx'>GitHub</Link><hr/>
             </div>
             <br/>
             <br/>
