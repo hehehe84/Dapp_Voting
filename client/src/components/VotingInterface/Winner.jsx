@@ -1,26 +1,31 @@
 import { useState, useEffect } from "react";
 import { useEth } from "../../contexts/EthContext";
+import { Button } from "@chakra-ui/react";
 
-function Winner({ currentPhase }) {
+function Winner({ currentStatus, setWinner }) {
   const { state: { accounts, contract, artifact }} = useEth();
-  const [winner, setWinner] = useState([]);
 
-  useEffect(() => {
-    async function getWinner() {
-      if (contract) {
-        const winnerId = await contract.methods.winningProposalID().call({ from: accounts[0] });
-        const winnerProposal = await contract.methods.getOneProposal(parseInt(winnerId)).call({ from: accounts[0] });
-        console.log(winnerProposal);
-        setWinner(winnerProposal);
-      }
-    };
-
-    getWinner();
-  }, [accounts, contract, artifact]);
+  async function getWinner() {
+    if (contract) {
+      const winnerId = await contract.methods.winningProposalID().call({ from: accounts[0] });
+      const winnerProposal = await contract.methods.getOneProposal(parseInt(winnerId)).call({ from: accounts[0] });
+      console.log(winnerProposal);
+      setWinner(winnerProposal);
+    }
+  };
 
   return (
-    <div className="winner">
-      The winner is : {winner.description} with {winner.voteCount} votes !
+
+    <div>
+      {(currentStatus === 1) ? (
+                  <Button colorScheme='teal' size='md' onClick={getWinner}>
+                    Get Proposal
+                  </Button>    
+              ) : (
+                <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
+                  Get Proposal
+                </Button>  
+          )}
     </div>
   );
 }

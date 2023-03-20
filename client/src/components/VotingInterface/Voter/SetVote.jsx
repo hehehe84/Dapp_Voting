@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useEth } from "../../../contexts/EthContext";
 import { Button } from "@chakra-ui/react";
 
-function SetVote({ currentStatus, setWinner }) {
+function SetVote({ currentStatus }) {
     const { state: { accounts, contract }} = useEth();
     const [proposal, setProposal] = useState(0);
 
     const handleProposalChange = (e) => {
-        setProposal(e);
+        if (/^\d+$|^$/.test(e.target.value)) {
+            setProposal(e.target.value);
+        }
       };
     
   
@@ -32,15 +34,14 @@ const addrVote = async () => {
             <div>
             {(currentStatus === 3) ? (
                   <Button colorScheme='teal' size='md' onClick={addrVote}>
-                    Get Proposal
+                    Set Vote
                   </Button>    
               ) : (
-                <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
-                  Get Proposal
+                <Button colorScheme='red' size='md' onClick={() => alert ('You cannot vote at that time.')}>
+                  Set Vote
                 </Button>  
           )}
           </div>
-            <br/>
         </>
     );
 }

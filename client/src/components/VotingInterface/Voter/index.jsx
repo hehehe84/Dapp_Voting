@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import AddProposal from "./AddProposal"
-// import SetVote from "./SetVote"
+import SetVote from "./SetVote"
 
 
-function Voter( {currentStatus, setWinner, proposals, setProposals, proposalID, setProposalID, voterAddr} ) {
+function Voter( {currentStatus, proposals, setProposals, proposalID, setProposalID, voterAddr} ) {
   const voterInterface =
   <>
     <Flex>
@@ -11,7 +11,7 @@ function Voter( {currentStatus, setWinner, proposals, setProposals, proposalID, 
         <AddProposal currentStatus={currentStatus} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} />
       </div>
       <div>
-        {/* <SetVote currentStatus={currentStatus} setWinner={setWinner} /> */}
+        <SetVote currentStatus={currentStatus} />
       </div>
     </Flex>
     <br/>
