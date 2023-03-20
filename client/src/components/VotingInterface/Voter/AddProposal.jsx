@@ -38,7 +38,7 @@ function AddProposal({currentStatus, proposals, setProposals, proposalID, setPro
       setOldProposal(oldies);
 
       let descriptions = [];
-      for (let id of oldies) { //Si marche pas, oldies
+      for (let id of oldies) { 
         let description = await contract.methods
           .getOneProposal(id)
           .call({ from: accounts[0] });
@@ -81,6 +81,7 @@ function AddProposal({currentStatus, proposals, setProposals, proposalID, setPro
                   onChange={(e) => setProposals(e.target.value)}
                 />
             </div>
+            <div>
               {(currentStatus === 1) ? (
                   <Button colorScheme='teal' size='md' onClick={addNewProposal}>
                     Add Proposal
@@ -90,6 +91,7 @@ function AddProposal({currentStatus, proposals, setProposals, proposalID, setPro
                     Add Proposal
                   </Button>
               )}
+            </div>
         </div>
           <br/>
 
@@ -116,13 +118,17 @@ function AddProposal({currentStatus, proposals, setProposals, proposalID, setPro
             
           </div>
           <br/>
-
-          <WrapItem>
+          <div>
+          {(currentStatus === 1) ? (
                   <Button colorScheme='teal' size='md' onClick={getOneProposal}>
-                    <span>Get Proposal</span>
-          
-                    </Button>  
-          </WrapItem>
+                    Get Proposal
+                  </Button>    
+              ) : (
+                <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
+                  Get Proposal
+                </Button>  
+          )}
+          </div>
           <br/>
         
           <p>
