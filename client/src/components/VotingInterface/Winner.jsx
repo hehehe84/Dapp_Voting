@@ -7,7 +7,7 @@ function Winner({ currentStatus, setWinner }) {
   const [winProp, setWinProp] = useState([]);
 
   async function getWinnerProposal() {
-    if (contract) {
+    if (artifact) {
       const winningProposalId = await contract.methods.winningProposalID().call({ from: accounts[0] });
       const winningProposal = await contract.methods.getOneProposal(parseInt(winningProposalId)).call({ from: accounts[0] });
       setWinProp(winningProposal);
@@ -16,11 +16,7 @@ function Winner({ currentStatus, setWinner }) {
 
   return (
     <div>
-      <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>
-        See winner
-      </Button>
-        <h4>The winning proposal is {winProp.description} !!! </h4>
-      {/* {(currentStatus === 4 ) ? (
+      {(currentStatus === 4 ) ? (
                 <div>
                   <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>
                     See winner
@@ -34,7 +30,7 @@ function Winner({ currentStatus, setWinner }) {
                   </Button>  
                   <h4>You cannot cause the winner is not designed yet</h4>
                 </div>
-          )} */}
+          )}
     </div>
   );
 }

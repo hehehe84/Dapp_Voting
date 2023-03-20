@@ -48,7 +48,7 @@ function Session() {
                     <Voter currentStatus={currentStatus} setWinner={setWinner} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} voterAddr={voterAddr}/>
                     </TabPanel>
                     <TabPanel>
-                    <Winner currentPhase={winner} />
+                    <Winner currentPhase={winner} currentStatus={currentStatus} />
                     </TabPanel>
                 </TabPanels>
                 
