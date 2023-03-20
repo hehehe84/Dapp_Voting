@@ -2,7 +2,7 @@ import useEth from "../../../contexts/EthContext/useEth"
 import { Button } from "@chakra-ui/react";
 
 function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
-  const { state: { contract, accounts, artifact } } = useEth();
+  const { state: { contract, accounts } } = useEth();
 
   const changeStatus = async () => {
     // console.log(currentStatus);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 import { Flex } from "@chakra-ui/react";
 import AddVoter from "./AddVoter";
 import IsOwner from "./IsOwner";

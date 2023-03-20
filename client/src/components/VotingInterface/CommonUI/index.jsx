@@ -6,15 +6,18 @@ import GetWorkflowStatus from "./GetWorkflowStatus";
 
 function CommonUI({currentStatus, setCurrentStatus, status}) {
   return (
-    <Flex justifyContent >
-        <div>
-            <Address />
-        </div>
-        <Spacer />
-        <div>
-            <GetWorkflowStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
-        </div>
-    </Flex>
+    <>
+        <Flex justifyContent >
+            <div>
+                <Address />
+            </div>
+            <Spacer />
+            <div>
+                <GetWorkflowStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
+            </div>
+        </Flex>
+        <hr/>
+    </>
   );
 }
 

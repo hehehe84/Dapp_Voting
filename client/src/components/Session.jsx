@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEth } from "../contexts/EthContext";
+import Hello from "./VotingInterface/Hello";
 import Owner from "./VotingInterface/Owner/index";
 import Voter from "./VotingInterface/Voter/index";
 import CommonUI from "./VotingInterface/CommonUI";
@@ -29,11 +30,15 @@ function Session() {
         <CommonUI currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
             <Tabs variant='soft-rounded' colorScheme='green'>
                 <TabList>
+                    <Tab>Welcome to your Voting App</Tab>
                     <Tab>Owner part</Tab>
                     <Tab>Voter part</Tab>
                     <Tab>Who is The Winner ?</Tab>
                 </TabList>
                 <TabPanels>
+                    <TabPanel>
+                    <Hello />
+                    </TabPanel>
                     <TabPanel>
                     <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} setWinner={setWinner} voters={voters} setVoters={setVoters} />
                     </TabPanel>
