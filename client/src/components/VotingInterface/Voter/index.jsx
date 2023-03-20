@@ -5,7 +5,7 @@ import GetOneProposal from "./GetOneProposal";
 // import GetVoter from "./GetVoter";
 
 
-function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, setProposals, proposalID, setProposalID, voters} ) {
+function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, setProposals, proposalID, setProposalID, voterAddr} ) {
   const { state: { contract, accounts } } = useEth();
   
   const voterInterface =

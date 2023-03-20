@@ -37,12 +37,19 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
   return (
     <>
       <div>
+      {isOwner ? (
         <Button colorScheme='teal' size='md' onClick={addVoter} disabled={!isOwner} >
         Add Voter
         </Button>
+      ) : (
+        <Button colorScheme='red' size='md' onClick={() => alert ('Only the owner can change the status.')} >
+        Add Voter
+        </Button>
+      )}
+        
           <input
               type="text"
-              placeholder="Voter Address"
+              placeholder=" Voter Address"
               value={voterAddr}
               onChange={handleInputChange}
             />

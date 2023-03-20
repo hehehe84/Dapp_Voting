@@ -16,8 +16,15 @@ function IsOwner({isOwner, setIsOwner}) {
     }, [accounts, contract, artifact])
 
 
+    
     return (
-        <div>{toString(isOwner)}</div>
+        <div>
+            {isOwner ? (
+                    <h3> Hello Administrator </h3>
+            ) : (
+                <h3>You are not authorized here</h3>
+            )}
+        </div>
     );
 }
 

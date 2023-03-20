@@ -23,7 +23,7 @@ function Session() {
       "VotesTallied"
     ];
     const [winner, setWinner] = useState(null); 
-    const [voters, setVoters] = useState([]); 
+    const [voterAddr, setVoterAddr] = useState('');
 
     const sess = 
     <>
@@ -40,10 +40,10 @@ function Session() {
                     <Hello />
                     </TabPanel>
                     <TabPanel>
-                    <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} setWinner={setWinner} voters={voters} setVoters={setVoters} />
+                    <Owner currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} setWinner={setWinner} voterAddr={voterAddr} setVoterAddr={setVoterAddr} />
                     </TabPanel>
                     <TabPanel>
-                    <Voter currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} voters={voters} />
+                    <Voter currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} voterAddr={voterAddr} />
                     </TabPanel>
                     <TabPanel>
                     <Winner currentPhase={winner} />

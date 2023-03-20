@@ -40,15 +40,12 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
       {isOwner ? (
         <Button colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner} >
           Next WorkflowStatus
-      </Button>
+        </Button>
       ) : (
-        <div >
           <Button colorScheme='red' size='md' onClick={() => alert ('Only the owner can change the status.')}>
             Next WorkflowStatus
           </Button>
-        </div>
       )}
-      
     </div>
   );
 }
