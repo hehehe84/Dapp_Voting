@@ -7,21 +7,23 @@ import GestionStatus from "./GestionStatus";
 
 
 function Owner({currentStatus, setCurrentStatus, status}) {
-  const [isOwner, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState('');
+  const [voterAddr, setVoterAddr] = useState('');
 
   const ownerInterface =
   <div>
     <div>
-      <IsOwner isOwner={isOwner} setIsOwner={setIsOwner} />
+      <IsOwner isOwner={isOwner} setIsOwner={setIsOwner} voterAddr={voterAddr} setVoterAddr={setVoterAddr}/>
       <br/>
     </div>
 
     <div>
-      <AddVoter currentStatus={currentStatus} />
+      <AddVoter isOwner={isOwner} currentStatus={currentStatus} voterAddr={voterAddr} setVoterAddr={setVoterAddr}/>
     </div>
+    <br/>
 
     <div>
-      <GestionStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} isOwner={isOwner} />
+      <GestionStatus isOwner={isOwner} currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status}  />
     </div>
 
   </div>;
