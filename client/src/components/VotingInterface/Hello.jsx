@@ -6,8 +6,11 @@ function Hello() {
         <br/>
         <br/>
             <div id="intro"> 
-                Hello, this application is Yours 😎.<br/>
-                Here it's possible to Develop a Vote For your community.
+                Hello! This application is Yours... 😎<br/>
+                Here it's possible to Develop a safe Vote for your community.<br/>
+                Users can organise vote sessions whith selected members, whitch we able to add prososals and vote.
+                
+
                 <br/>
                 Please, if you are a simple User, ger on Voter part☝️.<br/>
                 If you are the Owner and you wich to add a new Voter or to Open Proposals/Voting Registering,<br/>
@@ -16,18 +19,21 @@ function Hello() {
             <br/>
             <br/>
             <div id="intro2">
-                Thank you for your confidence. You can check all the code in our GitHubs<hr/>
-                Antoine Picot : <Link href='https://github.com/hehehe84/'>GitHub</Link><br/>
-                Xavier Barada : <Link href='https://github.com/XaViPanDx'>GitHub</Link>
+                Thank you for your confidence! You can check all the code in our GitHubs :<br/>
+                <br/>
+                Antoine Picot : <Link href='https://github.com/hehehe84/'>GitHub Link</Link><br/>
+                Xavier Barada : <Link href='https://github.com/XaViPanDx'>GitHub Link</Link>
             </div>
-            <br/>
-            <br/>
+            
+            
             <br/>
             <div id="intro3">
                 You like our work ?<br/>
-                Don't hesitate to help us keep going. <hr/>
-                Found us with some Goerli/Sepolia !<br/>
-                0xA36DB186685AeD4d34B5383A05aa98CC39a1C606
+                Don't hesitate to help us keep going! <hr/>
+                You can found us with some Goerli/Sepolia test Tokens 💪<br/>
+                0xA36DB186685AeD4d34B5383A05aa98CC39a1C606<br/>
+                                   &&& <br/>
+                0x1E2614163A0888C310d93AaF0F598a27b99Aa77A<br/>
             </div>
         </>
     );

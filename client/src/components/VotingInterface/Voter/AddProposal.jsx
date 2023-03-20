@@ -116,6 +116,7 @@ function AddProposal({currentStatus, proposals, setProposals, proposalID, setPro
             
           </div>
           <br/>
+          
 
           <WrapItem>
                   <Button colorScheme='teal' size='md' onClick={getOneProposal}>
