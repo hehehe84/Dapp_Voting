@@ -3,7 +3,6 @@ import useEth from "../../../contexts/EthContext/useEth";
 import AddProposal from "./AddProposal"
 import GetOneProposal from "./GetOneProposal";
 // import GetVoter from "./GetVoter";
-import GetWorkflowStatus from "./GetWorkflowStatus";
 
 
 function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, setProposals, proposalID, setProposalID, voters} ) {
@@ -20,11 +19,6 @@ function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, 
       </div>
     </Flex>
     <br/>
-    <Flex>
-      <div>
-        <GetWorkflowStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
-      </div>
-    </Flex>
     <div>
         {/* <GetVoter /> */}
     </div>

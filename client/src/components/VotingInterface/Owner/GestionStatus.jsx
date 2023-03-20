@@ -37,11 +37,10 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
 
   return (
     <div>
-      {/* <p>coucou</p>
       <Button colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner} >
         Next WorkflowStatus
-      </Button> */}
-    {status.map((state, i) => {
+      </Button>
+    {/* {status.map((state, i) => {
       if (i === currentStatus + 1) {
         return (
           <Button key={state} colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner}>
@@ -51,7 +50,7 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
       } else {
         return null;
       }
-    })}
+    })} */}
   </div>
   );
 }

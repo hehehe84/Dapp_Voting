@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import useEth from "../../contexts/EthContext/useEth";
+import useEth from "../../../contexts/EthContext/useEth";
 import { Button } from '@chakra-ui/react';
 
 function AddVoter({currentStatus}) {

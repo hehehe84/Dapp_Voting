@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEth } from "../contexts/EthContext";
 import Owner from "./VotingInterface/Owner/index";
 import Voter from "./VotingInterface/Voter/index";
+import CommonUI from "./VotingInterface/CommonUI";
 import Winner from "./VotingInterface/Winner";
 import NoticeNoArtifact from "./NoticeNoArtifact";
 import NoticeWrongNetwork from "./NoticeWrongNetwork";
@@ -25,6 +26,7 @@ function Session() {
 
     const sess = 
     <>
+        <CommonUI currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
             <Tabs variant='soft-rounded' colorScheme='green'>
                 <TabList>
                     <Tab>Owner part</Tab>

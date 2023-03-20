@@ -13,8 +13,8 @@ function App() {
       <EthProvider>
         <div id="App">
           <div className="container">
-            <Header/>
-            <hr/>
+            {/* <Header/>
+            <hr/> */}
             <Session />
             <hr/>
             <Footer />
