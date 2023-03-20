@@ -20,7 +20,7 @@ function IsOwner({isOwner, setIsOwner}) {
     return (
         <div>
             {isOwner ? (
-                    <h3> Hello Administrator </h3>
+                <h3> Hello Administrator </h3>
             ) : (
                 <h3>You are not authorized here</h3>
             )}
