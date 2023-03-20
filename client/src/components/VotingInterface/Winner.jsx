@@ -4,27 +4,33 @@ import { Button } from "@chakra-ui/react";
 
 function Winner({ currentStatus, setWinner }) {
   const { state: { accounts, contract, artifact }} = useEth();
+  const [winProp, setWinProp] = useState([]);
 
-  async function getWinner() {
+  async function getWinnerProposal() {
     if (contract) {
-      const winnerId = await contract.methods.winningProposalID().call({ from: accounts[0] });
-      const winnerProposal = await contract.methods.getOneProposal(parseInt(winnerId)).call({ from: accounts[0] });
-      console.log(winnerProposal);
-      setWinner(winnerProposal);
+      const winningProposalId = await contract.methods.winningProposalID().call({ from: accounts[0] });
+      const winningProposal = await contract.methods.getOneProposal(parseInt(winningProposalId)).call({ from: accounts[0] });
+      setWinProp(winningProposal);
     }
   };
 
   return (
 
     <div>
-      {(currentStatus === 1) ? (
-                  <Button colorScheme='teal' size='md' onClick={getWinner}>
-                    Get Proposal
-                  </Button>    
+      {(currentStatus === 5) ? (
+                <div>
+                  <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>
+                    See winner
+                  </Button>
+                  <h4>The winning proposal is {winProp.description} !!! </h4>
+                </div>    
               ) : (
-                <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
-                  Get Proposal
-                </Button>  
+                <div>
+                  <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
+                    See Winner
+                  </Button>  
+                  <h4>You cannot cause the winner is not designed yet</h4>
+                </div>
           )}
     </div>
   );
