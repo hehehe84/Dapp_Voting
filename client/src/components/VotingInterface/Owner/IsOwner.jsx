@@ -1,11 +1,26 @@
-async function IsOwner(isOwner, setIsOwner, accounts, contract, artifact) {
+import useEth from "../../../contexts/EthContext/useEth";
+import { useEffect } from 'react';
 
-    //const setIsOwner=false;
-    if (artifact) {
-        const owner = await contract.methods.owner().call({ from: accounts[0]});
-        accounts[0] === owner ? setIsOwner(true) : setIsOwner(false);
-    }
-    return setIsOwner;
+function IsOwner({isOwner, setIsOwner}) {
+    const { state: { contract, accounts, artifact } } = useEth();
+    
+    async function addrIsOwner() {
+        if (artifact) {
+            const owner = await contract.methods.owner().call({ from: accounts[0]});
+            accounts[0] === owner ? setIsOwner(true) : setIsOwner(false);
+        }
+    };
+
+    useEffect(() => {
+        addrIsOwner();
+    }, [accounts, contract, artifact])
+
+
+    return (
+        <div>
+            {`Is this Address, the Owner of the contract ? `} {isOwner}
+        </div>
+    );
 }
 
 export default IsOwner;

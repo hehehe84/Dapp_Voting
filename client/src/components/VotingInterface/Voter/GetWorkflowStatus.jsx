@@ -5,16 +5,16 @@ import { useEffect } from 'react';
 function GetWorkflowStatus ({currentStatus, setCurrentStatus, status}) {
   const { state: { contract, accounts, artifact } } = useEth();
 
-    async function getWorkflowStatus() {
-      if (artifact) {
-        const workflowStatusIndex = await contract.methods.workflowStatus().call({ from: accounts[0] });
-        setCurrentStatus(parseInt(workflowStatusIndex));
-      }
-    };
+  async function getWorkflowStatus() {
+    if (artifact) {
+      const workflowStatusIndex = await contract.methods.workflowStatus().call({ from: accounts[0] });
+      setCurrentStatus(parseInt(workflowStatusIndex));
+    }
+  };
 
 
-    useEffect(() => {
-      getWorkflowStatus();
+  useEffect(() => {
+    getWorkflowStatus();
   }, [accounts, contract, artifact, currentStatus])
     
 
