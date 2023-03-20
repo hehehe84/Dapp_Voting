@@ -21,14 +21,16 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
     }     
   };
 
+  let oldies = [];
   useEffect(() => {
     async function getUsers() {
       if (artifact) {
         let oldUsers = await contract.getPastEvents("VoterRegistered", {fromBlock:0, toBlock: "latest"});
         oldUsers.forEach(event => {
           voterList.push(event.returnValues.voterAddress);
+          oldies.push(event.returnValues.voterAddress);
         });
-        setOldUsers(voterList);
+        setOldUsers(oldies);
       }
     }
     getUsers();

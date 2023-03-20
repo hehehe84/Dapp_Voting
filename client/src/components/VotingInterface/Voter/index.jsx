@@ -8,7 +8,7 @@ function Voter( {currentStatus, setWinner, proposals, setProposals, proposalID, 
   <>
     <Flex>
       <div>
-        <AddProposal proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} />
+        <AddProposal currentStatus={currentStatus} proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} />
       </div>
       <div>
         {/* <SetVote proposals={proposals} setProposals={setProposals} currentStatus={currentStatus} setWinner={setWinner} /> */}

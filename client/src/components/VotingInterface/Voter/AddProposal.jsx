@@ -2,7 +2,7 @@ import { Button, WrapItem } from '@chakra-ui/react'
 import useEth from "../../../contexts/EthContext/useEth"
 import { useState, useEffect } from 'react';
 
-function AddProposal({proposals, setProposals, proposalID, setProposalID}) {
+function AddProposal({currentStatus, proposals, setProposals, proposalID, setProposalID}) {
   const { state: { contract, accounts, artifact, proposalList } } = useEth();
   const [newProposal, setNewroposal] = useState([]);
   const [oldProposal, setOldProposal] = useState([]);
@@ -23,28 +23,22 @@ function AddProposal({proposals, setProposals, proposalID, setProposalID}) {
   };
 
   useEffect(() => {
-    // (async function () {
-    //   let oldProposal = await contract.getPastEvents("ProposalRegistered", {
-    //     fromBlock: 0,
-    //     toBlock: "latest",
-    //   });
+    (async function () {
+      let oldProposal = await contract.getPastEvents("ProposalRegistered", {
+        fromBlock: 0,
+        toBlock: "latest",
+      });
 
-    //   let oldies = [];
-    //   oldProposal.forEach((event) => { oldies.push(event.returnValues.proposalId) });
+      let oldies = [];
+      oldProposal.forEach((event) => { 
+        oldies.push(event.returnValues.proposalId) 
+        proposalList.push(event.returnValues.proposalId)
+      });
 
-    //   setOldProposal(oldies);
-
-    (async function() {
-      if (artifact) {
-        let oldProposal = await contract.getPastEvents("ProposalRegistered", {fromBlock: 0, toBlock: "latest"});
-        oldProposal.forEach((event) => { 
-          proposalList.push(event.returnValues.proposalId) 
-        });
-        setOldProposal(proposalList)
-      }
+      setOldProposal(oldies);
 
       let descriptions = [];
-      for (let id of proposalList) { //Si marche pas, oldies
+      for (let id of oldies) { //Si marche pas, oldies
         let description = await contract.methods
           .getOneProposal(id)
           .call({ from: accounts[0] });
@@ -87,9 +81,15 @@ function AddProposal({proposals, setProposals, proposalID, setProposalID}) {
                   onChange={(e) => setProposals(e.target.value)}
                 />
             </div>
-                <WrapItem>
-                  <Button colorScheme='teal' size='md' onClick={addNewProposal}><span>Add Proposal</span></Button>  
-                </WrapItem>
+              {(currentStatus === 1) ? (
+                  <Button colorScheme='teal' size='md' onClick={addNewProposal}>
+                    Add Proposal
+                  </Button>  
+              ) : (
+                  <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')} >
+                    Add Proposal
+                  </Button>
+              )}
         </div>
           <br/>
 
