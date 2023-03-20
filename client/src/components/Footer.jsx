@@ -12,7 +12,7 @@ import {
         bg={useColorModeValue('gray.50', 'gray.900')}
         color={useColorModeValue('gray.700', 'gray.200')}
         bgPosition="bottom"
-        position='relative'
+        position='absolute'
         bottom={'0px'}
         textAlign={'center'}
         width={"100%"}

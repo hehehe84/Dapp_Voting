@@ -37,21 +37,19 @@ function GestionStatus({ currentStatus, setCurrentStatus, status, isOwner }) {
 
   return (
     <div>
-      <Button colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner} >
-        Next WorkflowStatus
+      {isOwner ? (
+        <Button colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner} >
+          Next WorkflowStatus
       </Button>
-    {/* {status.map((state, i) => {
-      if (i === currentStatus + 1) {
-        return (
-          <Button key={state} colorScheme='teal' size='md' onClick={changeStatus} disabled={!isOwner}>
-            {state}
+      ) : (
+        <div >
+          <Button colorScheme='red' size='md' onClick={() => alert ('Only the owner can change the status.')}>
+            Next WorkflowStatus
           </Button>
-        );
-      } else {
-        return null;
-      }
-    })} */}
-  </div>
+        </div>
+      )}
+      
+    </div>
   );
 }
 export default GestionStatus;
