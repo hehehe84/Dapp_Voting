@@ -7,8 +7,8 @@ import GetWorkflowStatus from "./GetWorkflowStatus";
 function CommonUI({currentStatus, setCurrentStatus, status}) {
   return (
     <>
-      <Box bgColor={"#313338"} h="100px" textColor={"whiteAlpha.900"} >
-        <Flex justifyContent paddingLeft={"20px"} paddingRight={"20px"} paddingTop={"10px"}>
+      <Box bgColor={"#313338"} h="100px" textColor={"#C6F6D5"} borderRadius={"20px"} >
+        <Flex justifyContent paddingLeft={"50px"} paddingRight={"50px"} paddingTop={"20px"}>
             <div>
                 <Address />
             </div>
