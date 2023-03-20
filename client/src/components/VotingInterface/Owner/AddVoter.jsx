@@ -1,11 +1,10 @@
-
-//import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useEth from "../../../contexts/EthContext/useEth";
 import { Button } from '@chakra-ui/react';
 
 function AddVoter({isOwner, voterAddr, setVoterAddr}) {
-  const { state: { contract, accounts } } = useEth();
-  
+  const { state: { artifact, contract, accounts, voterList } } = useEth();
+  const [oldUsers, setOldUsers] = useState([]);
   
   const handleInputChange = (e) => {
     setVoterAddr(e.target.value);
@@ -17,13 +16,26 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
       alert("Voter added Successfully");
       setVoterAddr('');
     } catch(error) {
-      alert("Error");
+      alert("Error, Address is not Valid !");
       setVoterAddr('');
     }     
   };
+
+  useEffect(() => {
+    async function getUsers() {
+      if (artifact) {
+        let oldUsers = await contract.getPastEvents("VoterRegistered", {fromBlock:0, toBlock: "latest"});
+        oldUsers.forEach(event => {
+          voterList.push(event.returnValues.voterAddress);
+        });
+        setOldUsers(voterList);
+      }
+    }
+    getUsers();
+  }, [accounts, contract, artifact]);
   
   return (
-    
+    <>
       <div>
         <Button colorScheme='teal' size='md' onClick={addVoter} disabled={!isOwner} >
         Add Voter
@@ -35,6 +47,16 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
               onChange={handleInputChange}
             />
       </div>
+      <hr/>
+      <div>
+        <h3>Voter List :</h3>
+        <ol>
+          {oldUsers &&
+          oldUsers.map((event, i) =>
+          <li key={i}>Voter: {event}</li>)}
+        </ol>
+      </div>
+    </>
   );
 }
 
