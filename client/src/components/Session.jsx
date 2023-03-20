@@ -29,13 +29,15 @@ function Session() {
     <>
         <CommonUI currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
             <Tabs variant='soft-rounded' colorScheme='green'>
+                <br/>
+                <br/>
                 <TabList>
                     <Tab>Welcome to your Voting App</Tab>
                     <Tab>Owner part</Tab>
                     <Tab>Voter part</Tab>
                     <Tab>Who is The Winner ?</Tab>
                 </TabList>
-                <TabPanels>
+                <TabPanels id="tab">
                     <TabPanel>
                     <Hello />
                     </TabPanel>
