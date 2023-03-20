@@ -15,9 +15,12 @@ function Winner({ currentStatus, setWinner }) {
   };
 
   return (
-
     <div>
-      {(currentStatus === 5) ? (
+      <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>
+        See winner
+      </Button>
+        <h4>The winning proposal is {winProp.description} !!! </h4>
+      {/* {(currentStatus === 4 ) ? (
                 <div>
                   <Button colorScheme='teal' size='md' onClick={getWinnerProposal}>
                     See winner
@@ -26,12 +29,12 @@ function Winner({ currentStatus, setWinner }) {
                 </div>    
               ) : (
                 <div>
-                  <Button colorScheme='red' size='md' onClick={() => alert ('You cannot add any proposals at that time.')}>
+                  <Button colorScheme='red' size='md' onClick={() => alert ('You cannot see the Winner now.')}>
                     See Winner
                   </Button>  
                   <h4>You cannot cause the winner is not designed yet</h4>
                 </div>
-          )}
+          )} */}
     </div>
   );
 }
