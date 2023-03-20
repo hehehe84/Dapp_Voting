@@ -1,7 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import useEth from "../../../contexts/EthContext/useEth";
 import AddProposal from "./AddProposal"
-import GetOneProposal from "./GetOneProposal";
 // import GetVoter from "./GetVoter";
 
 
@@ -15,7 +14,7 @@ function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, 
         <AddProposal proposals={proposals} setProposals={setProposals} proposalID={proposalID} setProposalID={setProposalID} />
       </div>
       <div>
-        <GetOneProposal contract={contract} accounts={accounts} />
+        
       </div>
     </Flex>
     <br/>
@@ -29,8 +28,7 @@ function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, 
   return (
       <div>
         {voterInterface}
-      </div>
-    
+      </div> 
   );
 }
 
