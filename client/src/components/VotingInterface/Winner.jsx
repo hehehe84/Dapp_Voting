@@ -8,6 +8,7 @@ function Winner({ currentStatus, setWinner }) {
 
   async function getWinnerProposal() {
     if (artifact) {
+      await contract.methods.winningProposalID().call({ from: accounts[0] });
       const winningProposalId = await contract.methods.winningProposalID().call({ from: accounts[0] });
       const winningProposal = await contract.methods.getOneProposal(parseInt(winningProposalId)).call({ from: accounts[0] });
       setWinProp(winningProposal);
