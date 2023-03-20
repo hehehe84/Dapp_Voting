@@ -3,11 +3,11 @@ import { Flex } from "@chakra-ui/react";
 import useEth from "../../../contexts/EthContext/useEth";
 import AddProposal from "./AddProposal"
 import GetOneProposal from "./GetOneProposal";
-import GetVoter from "./GetVoter";
+// import GetVoter from "./GetVoter";
 import GetWorkflowStatus from "./GetWorkflowStatus";
 
 
-function Voter(status, currentStatus, setWinner, proposals, setProposals, proposalID, setProposalID, voters) {
+function Voter( {currentStatus, setCurrentStatus, status, setWinner, proposals, setProposals, proposalID, setProposalID, voters} ) {
   const { state: { contract, accounts } } = useEth();
   
   const voterInterface =
@@ -23,11 +23,11 @@ function Voter(status, currentStatus, setWinner, proposals, setProposals, propos
     <br/>
     <Flex>
       <div>
-        <GetWorkflowStatus status={status} currentStatus={currentStatus} />
+        <GetWorkflowStatus currentStatus={currentStatus} setCurrentStatus={setCurrentStatus} status={status} />
       </div>
     </Flex>
     <div>
-        <GetVoter />
+        {/* <GetVoter /> */}
     </div>
   </>;
 
