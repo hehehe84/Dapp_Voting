@@ -56,6 +56,7 @@ function AddVoter({isOwner, voterAddr, setVoterAddr}) {
               onChange={handleInputChange}
             />
       </div>
+      <br/>
       <hr/>
       <div>
         <h3>Voter List :</h3>
